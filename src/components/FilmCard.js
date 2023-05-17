@@ -11,7 +11,7 @@ export default function FilmCard (props) {
             <h2>{ data.Title }</h2>
             <h3>{ data.Year }</h3>
             <img src={ data.Poster } alt={ `Poster de ${ data.Title }` }></img>
-            { data.imdbRating!=="N/A" && <h4>{ data.imdbRating/2 }/5</h4> }
+            { data.imdbRating!=="N/A" && <Rating stars={ Math.floor(data.imdbRating/2) } /> }
 
             {/* infos de base sur le film */}
             <table>
@@ -50,3 +50,18 @@ export default function FilmCard (props) {
         </div>
     ); // fin return
 } // fin FilmCard
+
+
+function Rating(props) {
+    let stars = '';
+
+    for (let i=0; i<props.stars; i++) {
+        stars += '*';
+    }
+
+    return (
+        <h4>
+            { stars }
+        </h4>
+    )
+}
